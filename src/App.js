@@ -1,13 +1,30 @@
-import React, { useState } from "react";
-import ColorList from "./components/ColorList.js";
-import AddColorForm from "./components/ColorForm.js";
+import React, { useState, useEffect, memo } from "react";
+import GithubUser from "./components/fetch_req_gituser.js";
+import SearchForm from "./components/SearchForm.js";
+// import { FixedSizeList } from "react-window";
+// import faker from "faker";
 
-export default function App(){
+// import ColorList from "./components/ColorList.js";
+// import AddColorForm from "./components/ColorForm.js";
+
+
+
+// import List from "./components/list_component";
+// import { render } from "@testing-library/react";
+
+// const biglist = [...Array(5000)].map(() => ({
+//   name: faker.name.findName(),
+//   email: faker.internet.email(),
+//   avatar: faker.internet.avatar()
+// }));
+
+
+export default function App() {
+  const [login, setLogin] = useState("moontahoe");
 
   return (
     <>
-      <AddColorForm />
-      <ColorList />
+      <GithubUser login={login} />
     </>
   )
 }
@@ -15,7 +32,62 @@ export default function App(){
 
 
 
+// export default function App() {
 
+//   const renderRow = ({ index, style }) => (
+//     <div style={{ ...style, ...{ display: "flex" } }}>
+//       <img
+//         src={biglist[index].avatar}
+//         alt={biglist[index].name}
+//         width={50}
+//       />
+//       <p>
+//         {biglist[index].name} - {biglist[index].email}
+//       </p>
+//     </div>
+//   )
+
+//   return (
+//     <FixedSizeList
+//       height={window.innerHeight}
+//       width={window.innerWidth - 20}
+//       itemCount={biglist.length}
+//       itemSize={50}
+//     >
+//       {renderRow}
+//     </FixedSizeList>
+//   )
+// }
+
+
+
+
+
+// const Cat = ({ name }) => {
+//   console.log(`rendering ${name}`)
+// }
+
+// const PureCat = memo(Cat);
+
+// export default function App() {
+//   const [cats, setCats] = useState(["B", "j", "o"]);
+//   return (
+//     <>
+//       {cats.map((name, i) =>
+//         <PureCat key={i} name={name} />
+//       )}
+//       <button onClick={() => setCats([...cats, prompt('name a cat')])}>
+//         Add a cat
+//       </button>
+//     </>
+
+//   )
+// }
+
+// <>
+//   <AddColorForm />
+//   <ColorList />
+// </>
 
 
 
