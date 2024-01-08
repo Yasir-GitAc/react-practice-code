@@ -1,6 +1,31 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
+import React, { createContext, useState, useEffect, useContext, useCallback, useMemo } from "react";
 import colorData from "../data/color-data.json";
 import { v4 } from "uuid";
+
+
+// useIterator custom hook p177-178,ch8
+export const useIterator = (
+    items = [],
+    initialIndex = 0
+) => {
+    const [i, setIndex] = useState(initialIndex);
+
+    const prev = useCallback(() => {
+        if (i === 0) return setIndex(items.length - 1)
+        setIndex(i - 1)
+        console.log(i)
+    }, [i]);
+
+    const next = useCallback(() => {
+        if (i === items.length - 1) return setIndex(0)
+        setIndex(i + 1)
+    }, [i])
+
+    const item = useMemo(() => items[i], [i])
+
+    return [item || items[0], prev, next]
+
+}
 
 
 

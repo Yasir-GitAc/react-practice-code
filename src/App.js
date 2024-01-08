@@ -1,6 +1,8 @@
 import React, { useState, useEffect, memo } from "react";
 import GithubUser from "./components/fetch_req_gituser.js";
 import SearchForm from "./components/SearchForm.js";
+import UserRepositories from "./components/userRepositories.js";
+import RepositoryReadme from "./components/RepositoryReadme.js";
 // import { FixedSizeList } from "react-window";
 // import faker from "faker";
 
@@ -20,11 +22,19 @@ import SearchForm from "./components/SearchForm.js";
 
 
 export default function App() {
-  const [login, setLogin] = useState("moontahoe");
+  const [login, setLogin] = useState("moonhighway");
+  const [repo, setRepo] = useState("learning-react");
 
   return (
     <>
+      <SearchForm value={login} onSearch={setLogin} />
       <GithubUser login={login} />
+      <UserRepositories
+        login={login}
+        repo={repo}
+        onSelect={setRepo}
+      />
+      <RepositoryReadme login={login} repo={repo} />
     </>
   )
 }

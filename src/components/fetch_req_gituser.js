@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Fetch from "./fetch_component";
+import UserRepositories from "./userRepositories";
 
 // // requesting data
 // fetch(`https://api.github.com/users/moonhighway`)
@@ -168,7 +169,7 @@ function UserDatails({ data }) {
         <div className="githubuser">
             <img
                 src={data.avatar_url}
-                alt={data.name}
+                alt={data.login}
                 style={{ width: 50 }}
             />
             <div>
@@ -176,6 +177,10 @@ function UserDatails({ data }) {
                 {data.name && <p>{data.name}</p>}
                 {data.location && <p>{data.location}</p>}
             </div>
+            {/* <UserRepositories
+                login={data.login}
+                onSelect={repoName => console.log(`${repoName} selected`)}
+            /> */}
 
         </div>
     );
